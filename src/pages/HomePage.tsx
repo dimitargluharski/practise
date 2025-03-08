@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputField } from "../components/inputField/InputField"
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { GoThumbsdown, GoThumbsup } from "react-icons/go";
@@ -48,7 +48,7 @@ export const HomePage = () => {
       <InputField handleOnChangeInput={handleOnChangeInput} term={term} />
 
       <div className="flex flex-col gap-2">
-        {topics.map((topic) => (
+        {topics.sort((a, b) => b.votes - a.votes).map((topic) => (
           <div key={topic.id} className="flex flex-col gap-2 border rounded-md p-2">
             <div className="flex gap-1">
               <span className="font-bold italic">
