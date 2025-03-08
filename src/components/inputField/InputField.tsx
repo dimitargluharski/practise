@@ -6,7 +6,7 @@ type InputFieldTypes = {
 export const InputField = ({ handleOnChangeInput, term }: InputFieldTypes) => {
   return (
     <div className="w-full">
-      <input type="text" placeholder="Add topic" onChange={handleOnChangeInput} value={term} className="w-full p-2 rounded-md" />
+      <input type="text" placeholder="Search a topic..." onChange={handleOnChangeInput} value={term} className="w-full p-2 rounded-md" />
     </div>
   )
 }
