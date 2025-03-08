@@ -87,11 +87,8 @@ export const HomePage = () => {
 
             </div>
           </div>
-        )).slice(0, showMore)}
+        ))}
 
-        <div className="bg-slate-500 p-2 rounded-md text-center text-white" onClick={handleShowMoreTopics}>
-          {topics.length && (<button>show more</button>)}
-        </div>
       </div>
     </div>
   )
