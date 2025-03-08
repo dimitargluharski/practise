@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { InputField } from "../components/inputField/InputField"
+import { useState } from "react";
+import { InputField } from "../components/InputField/InputField"
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { GoThumbsdown, GoThumbsup } from "react-icons/go";
 import { Link } from "react-router-dom";
@@ -62,7 +62,7 @@ export const HomePage = () => {
                   {topic.votes}
                 </div>
 
-                <button onClick={() => handleComment(topic.id, topic.title)} className="hover:cursor-pointer">
+                <button className="hover:cursor-pointer">
                   <Link to={`/${topic.id}`}>
                     <IoChatboxEllipsesOutline className="w-5 h-5" />
                   </Link>
