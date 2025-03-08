@@ -17,6 +17,10 @@ export const Navbar = () => {
           Topics
         </NavLink>
 
+        <button className="bg-blue-700 p-2 text-white rounded-md">
+          + Add topic
+        </button>
+
         <div className="p-2">
           {theme === 'dark'
             ? <FaMoon className="w-5 h-5" onClick={toggleTheme} />
