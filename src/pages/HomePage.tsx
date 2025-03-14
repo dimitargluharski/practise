@@ -50,8 +50,16 @@ import { supabase } from "../db/config";
 //   },
 // ];
 
+
+interface TopicsInterface {
+  id: number;
+  title: string;
+  author: string;
+  votes: number;
+}
+
 export const HomePage = () => {
-  const [topics, setTopics] = useState([]);
+  const [topics, setTopics] = useState<TopicsInterface[]>([]);
   const [term, setTerm] = useState("");
 
   const handleOnChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +96,8 @@ export const HomePage = () => {
 
     fetchData();
   }, []);
+
+  console.log(topics)
 
   return (
     <div className="max-w-3xl mx-auto p-4 flex flex-col shadow-md">
@@ -150,24 +160,30 @@ export const HomePage = () => {
           ))}
       </div> */}
 
-      {topics.map((topic) => (
-        <div key={topic.id}>
-          <h3>
-            {topic.title}
-          </h3>
-
-          <p>
-            author: <span>
+      {topics.sort((a, b) => b.votes - a.votes).map((topic) => (
+        <div className="flex items-center justify-between">
+          <div className="flex flex-col">
+            <div>
               {topic.author}
-            </span>
-          </p>
+            </div>
 
-          <div>
-            {topic.votes}
+            <div>
+              author:
+              <span>
+                {topic.author}
+              </span>
+            </div>
+
+            <div>
+              {topic.votes}
+            </div>
           </div>
+
+          {topic.votes > 8 && <div className={`${topic.votes > 8 ? 'bg-red-500 rounded-md text-white' : ''} p-1 flex flex-col justify-center`}>
+            hot topic
+          </div>}
         </div>
       ))}
-
     </div>
   );
 };
