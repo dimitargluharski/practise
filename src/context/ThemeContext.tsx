@@ -12,10 +12,13 @@ type ThemeContextType = {
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeContextProvider = ({ children }: ThemeContextProvider) => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState<string>('dark');
 
   const handleToggleTheme = () => {
-    setTheme((oldThemeValue) => oldThemeValue === 'dark' ? 'light' : 'dark');
+    setTheme((oldThemeValue) => {
+      const newTheme = oldThemeValue === "dark" ? "light" : "dark";
+      return newTheme;
+    });
   }
 
   return (
