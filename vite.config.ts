@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss(),],
   server: {
     open: true
+  },
+  define: {
+    "process.env": process.env
   }
 })
