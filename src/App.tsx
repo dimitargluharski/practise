@@ -5,11 +5,29 @@ import { TopicDetailsPage } from "./pages/TopicDetailsPage";
 import { LoginPage } from "./pages/LoginPage";
 import { Navbar } from "./components/Navbar/Navbar";
 import { CreateNewTopicPage } from "./pages/CreateNewTopicPage";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollY > 0 ? setIsScrolling(true) : setIsScrolling(false);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="max-w-3xl mx-auto">
-      <Navbar />
+    <div className="max-w-3xl mx-auto relative">
+      <div className={`fixed top-0 left-0 w-full transition-all duration-300 ${isScrolling
+        ? "bg-blue-600 shadow-lg"
+        : "bg-transparent text-black"
+        }`}>
+        <Navbar />
+      </div>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
