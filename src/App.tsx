@@ -9,27 +9,27 @@ import { CreateNewTopicPage } from "./pages/CreateNewTopicPage";
 
 function App() {
   return (
-
     <div className="max-w-3xl mx-auto relative bg-white">
-    <div className="relative max-w-3xl mx-auto">
-      {isMobile
-        ? (
-          <div className="fixed bottom-0 left-0 w-full">
+      <div className="relative max-w-3xl mx-auto">
+        {isMobile
+          ? (
+            <div className="fixed bottom-0 left-0 w-full">
+              <Navbar />
+            </div>
+          ) :
+          <div className="relative">
             <Navbar />
           </div>
-        ) :
-        <div className="relative">
-          <Navbar />
-        </div>
-      }
+        }
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/:topicId" element={<TopicDetailsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/create-new-topic" element={<CreateNewTopicPage />} />
-      </Routes>
-    </div >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/:topicId" element={<TopicDetailsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/create-new-topic" element={<CreateNewTopicPage />} />
+        </Routes>
+      </div>
+    </div>
   )
 }
 
