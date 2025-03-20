@@ -1,7 +1,11 @@
 import { useContext } from "react";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { FaMoon } from "react-icons/fa6";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
+import { IoPerson } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
+
 import { ThemeContext } from "../../context/ThemeContext";
 
 export const Navbar = () => {
@@ -9,32 +13,40 @@ export const Navbar = () => {
 
   if (!themeContext) return;
   const { theme, handleToggleTheme } = themeContext;
+  const navigate = useNavigate();
+
+  const handleNavigateToCreateTopicPage = () => {
+    return navigate("/create-topic");
+  }
 
   return (
-    <div className="w-full flex dark:bg-slate-500 bg-white">
-      <div className="flex justify-between w-full p-2">
+    <div className="flex dark:bg-slate-700 dark:text-white w-full">
+      <div className="flex justify-between w-full items-center p-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive ? "border-b-3 border-b-blue-700" : ""
           }
         >
-          Topics
+          <div className="hover:cursor-pointer">
+            <FaHome className="w-5 h-5" />
+          </div>
         </NavLink>
 
-        <Link
-          to="/create-new-topic"
-          className="bg-blue-700 p-2 text-white rounded-md"
-        >
-          + Add topic
-        </Link>
+        <div className="flex items-center gap-2">
+          <div onClick={handleNavigateToCreateTopicPage} className="hover:cursor-pointer">
+            <FaPlus className="w-5 h-5" />
+          </div>
 
-        <div className="p-2">
-          {theme === "dark" ? (<div className="border-2 hover:cursor-pointer">
+          <div className="hover:cursor-pointer">
+            <IoPerson className="w-5 h-5" />
+          </div>
+
+          {theme === "dark" ? (<div className="hover:cursor-pointer">
             <FaMoon className="w-5 h-5" onClick={handleToggleTheme} />
           </div>
           ) : (
-            <div className="border-2 hover:cursor-pointer">
+            <div className="hover:cursor-pointer">
               <MdOutlineWbSunny className="w-5 h-5" onClick={handleToggleTheme} />
             </div>
           )}
