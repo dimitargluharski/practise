@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { isMobile } from 'react-device-detect';
 
 import { HomePage } from "./pages/HomePage";
 import { TopicDetailsPage } from "./pages/TopicDetailsPage";
@@ -8,8 +9,19 @@ import { CreateNewTopicPage } from "./pages/CreateNewTopicPage";
 
 function App() {
   return (
+
     <div className="max-w-3xl mx-auto relative bg-white">
-      <Navbar />
+    <div className="relative max-w-3xl mx-auto">
+      {isMobile
+        ? (
+          <div className="fixed bottom-0 left-0 w-full">
+            <Navbar />
+          </div>
+        ) :
+        <div className="relative">
+          <Navbar />
+        </div>
+      }
 
       <Routes>
         <Route path="/" element={<HomePage />} />
