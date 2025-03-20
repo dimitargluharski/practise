@@ -8,12 +8,12 @@ import { ThemeContextProvider } from './context/ThemeContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ThemeContextProvider>
+    <ThemeContextProvider>
+      <BrowserRouter>
         <UserContextProvider>
           <App />
         </UserContextProvider>
-      </ThemeContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeContextProvider>
   </StrictMode>,
 )

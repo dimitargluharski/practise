@@ -9,6 +9,8 @@ import { CreateNewTopicPage } from "./pages/CreateNewTopicPage";
 
 function App() {
   return (
+
+    <div className="max-w-3xl mx-auto relative bg-white">
     <div className="relative max-w-3xl mx-auto">
       {isMobile
         ? (
@@ -27,8 +29,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-new-topic" element={<CreateNewTopicPage />} />
       </Routes>
-    </div>
-  );
+    </div >
+  )
 }
 
 export default App;
